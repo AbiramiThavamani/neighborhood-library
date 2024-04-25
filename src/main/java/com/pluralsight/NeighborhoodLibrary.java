@@ -19,7 +19,7 @@ public class NeighborhoodLibrary {
         library.homeScreen(books);
     }
 
-    //home screen
+    //home screen is display a list of options
     public void homeScreen(Book[] books){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the value 1 to Show Available Books");
