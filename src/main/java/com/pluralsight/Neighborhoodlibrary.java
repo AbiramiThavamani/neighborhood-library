@@ -8,66 +8,112 @@ public class Neighborhoodlibrary {
     public static void main(String[] args) {
         //books inventory
         Book[] books = new Book[5];
-        books[0] = new Book(116148870, "978-0-13-601970-1", "Trust", "");
-        books[1] = new Book(116148871, "978-0-13-601971-2", "The Coming", "");
-        books[2] = new Book(116148870, "978-0-13-601972-4", "Bitter Sweet", "");
-        books[3] = new Book(116148870, "978-0-13-601973-3", "Caste", "");
-        books[4] = new Book(116148870, "978-0-13-601974-9", "IRON FLAME", "");
+        books[0] = new Book(1, "978-0-13-601970-1", "Trust", "");
+        books[1] = new Book(2, "978-0-13-601971-2", "The Coming", "");
+        books[2] = new Book(3, "978-0-13-601972-4", "Bitter Sweet", "");
+        books[3] = new Book(4, "978-0-13-601973-3", "Caste", "");
+        books[4] = new Book(5, "978-0-13-601974-9", "IRON FLAME", "");
 
+        Neighborhoodlibrary library = new Neighborhoodlibrary();
+        library.homeScreen(books);
+    }
+
+    public void homeScreen(Book[] books){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the value 1 to Show Available Books");
         System.out.println("Enter the value 2 to Show Checked Out Books");
         System.out.println("Enter the value 3 to Exit Application");
 
         int homeMenu = scanner.nextInt();
-//        System.out.println(homeMenu);
+        Neighborhoodlibrary library = new Neighborhoodlibrary();
 
         if (homeMenu == 1) {
-            System.out.println("available books");
+            System.out.println("selected menu show available books");
+            library.showAvailableBooks(books);
         } else if (homeMenu == 2) {
-            System.out.println("show Checked Out Books");
+            System.out.println("selected menu show Checked Out Books");
+            library.showCheckedBooks(books);
         } else if (homeMenu == 3) {
             System.out.println("Exit Application");
         } else {
             System.out.println("invalid number");
         }
-
-        Neighborhoodlibrary library = new Neighborhoodlibrary();
-        library.showAvailableBooks(books);
     }
+    // display showAvailable Books
 
    public void showAvailableBooks(Book[] books) {
+       System.out.println("Available books are:");
         for (int i = 0; i<books.length; i++) {
-           if (!books[i].isCheckedOut()){
-               System.out.println(books[i].getId() + "   " + books[i].getIsbn() + "   " + books[i].getTitle());
-           }
-
+            if (!books[i].isCheckedOut()){
+                System.out.println(books[i].getId() + "   " + books[i].getIsbn() + "   " + books[i].getTitle());
+            }
         }
+        Scanner scanner = new Scanner(System.in);
+       System.out.println("Select below options");
+       System.out.println("C for check out");
+       System.out.println("X for home screen");
+       String options = scanner.next();
+
+       Neighborhoodlibrary neighborhoodlibrary = new Neighborhoodlibrary();
+       if(options.equals("C")) {
+           System.out.println("Enter Book Details:");
+           System.out.println("Enter Book ID:");
+           int id = scanner.nextInt();
+           System.out.println("Enter Your Name:");
+           String name = scanner.next();
+           neighborhoodlibrary.checkOut(id, name, books);
+           neighborhoodlibrary.homeScreen(books);
+       } else if (options.equals("X")){
+           neighborhoodlibrary.homeScreen(books);
+       } else {
+           System.out.println("Invalid Option");
+       }
    }
+   // display showCheckedBooks
+    public void showCheckedBooks(Book[] books) {
+        System.out.println("Checked out books are:");
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].isCheckedOut()) {
+                System.out.println(books[i].getId() + "   " + books[i].getIsbn() + "   " + books[i].getTitle());
+            }
+        }
+        System.out.println("Check in options");
+        System.out.println("C for check in");
+        System.out.println("X for home screen");
+        Scanner scanner = new Scanner(System.in);
+        String options = scanner.next();
+        Neighborhoodlibrary neighborhoodlibrary = new Neighborhoodlibrary();;
+        if (options.equals("C")) {
+            System.out.println("Enter book id:");
+            int id = scanner.nextInt();
+            neighborhoodlibrary.checkIn(id, books);
+            neighborhoodlibrary.homeScreen(books);
+        } else if (options.equals("X")) {
+            neighborhoodlibrary.homeScreen(books);
+        } else {
+            System.out.println("Invalid Option");
+        }
+    }
+       // method checkIn
+    public void checkIn(int id, Book[] books){
+        for (int i = 0; i<books.length; i++){
+            if (books[i].getId()==id){
+                books[i].setCheckedOut(false);
+                books[i].setCheckedOutTo("");
+            }
+        }
+        System.out.println("Checked in successfully");
+    }
+    // method checkOut
 
-
-
-
-
-//        // Method for checking out;
-//        public void checkOut(String name) {
-//            if (!isCheckedOut) {
-//                isCheckedOut = true;
-//                CheckedOutTo = name;
-//                System.out.println(title + "has been checked out to " + name);
-//            } else {
-//                System.out.println(title + " is already checked out ");
-//            }
-//        }
-//            // Method for checkIn;
-//            public void checkIn () {
-//                if (isCheckedOut) {
-//                    isCheckedOut = false;
-//                    System.out.println(title + " has been checked in ");
-//                } else {
-//                    System.out.println(title + " is not checked out ");
-//                }
-//            }
-//        }
+    public void checkOut(int id, String name, Book[] books){
+        for (int i = 0; i<books.length; i++){
+            if (books[i].getId()==id){
+                books[i].setCheckedOut(true);
+                books[i].setCheckedOutTo(name);
+            }
+        }
+        System.out.println("checked out successfully");
+    }
 
 }
