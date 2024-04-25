@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d10e67a3-c166-4721-94a0-02f5b4ed017a" name="Changes" comment="library checkIn and checkOut display" />
+    <list default="true" id="d10e67a3-c166-4721-94a0-02f5b4ed017a" name="Changes" comment="library checkIn and checkOut display">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Neighborhoodlibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/NeighborhoodLibrary.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

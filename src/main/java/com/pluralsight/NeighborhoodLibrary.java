@@ -1,10 +1,11 @@
 package com.pluralsight;
 
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Neighborhoodlibrary {
+public class NeighborhoodLibrary {
+
+    //main method
     public static void main(String[] args) {
         //books inventory
         Book[] books = new Book[5];
@@ -14,10 +15,11 @@ public class Neighborhoodlibrary {
         books[3] = new Book(4, "978-0-13-601973-3", "Caste", "");
         books[4] = new Book(5, "978-0-13-601974-9", "IRON FLAME", "");
 
-        Neighborhoodlibrary library = new Neighborhoodlibrary();
+        NeighborhoodLibrary library = new NeighborhoodLibrary();
         library.homeScreen(books);
     }
 
+    //home screen
     public void homeScreen(Book[] books){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the value 1 to Show Available Books");
@@ -25,7 +27,7 @@ public class Neighborhoodlibrary {
         System.out.println("Enter the value 3 to Exit Application");
 
         int homeMenu = scanner.nextInt();
-        Neighborhoodlibrary library = new Neighborhoodlibrary();
+        NeighborhoodLibrary library = new NeighborhoodLibrary();
 
         if (homeMenu == 1) {
             System.out.println("selected menu show available books");
@@ -39,8 +41,8 @@ public class Neighborhoodlibrary {
             System.out.println("invalid number");
         }
     }
-    // display showAvailable Books
 
+    // display showAvailable Books
    public void showAvailableBooks(Book[] books) {
        System.out.println("Available books are:");
         for (int i = 0; i<books.length; i++) {
@@ -54,7 +56,7 @@ public class Neighborhoodlibrary {
        System.out.println("X for home screen");
        String options = scanner.next();
 
-       Neighborhoodlibrary neighborhoodlibrary = new Neighborhoodlibrary();
+       NeighborhoodLibrary neighborhoodlibrary = new NeighborhoodLibrary();
        if(options.equals("C")) {
            System.out.println("Enter Book Details:");
            System.out.println("Enter Book ID:");
@@ -69,6 +71,7 @@ public class Neighborhoodlibrary {
            System.out.println("Invalid Option");
        }
    }
+
    // display showCheckedBooks
     public void showCheckedBooks(Book[] books) {
         System.out.println("Checked out books are:");
@@ -82,7 +85,7 @@ public class Neighborhoodlibrary {
         System.out.println("X for home screen");
         Scanner scanner = new Scanner(System.in);
         String options = scanner.next();
-        Neighborhoodlibrary neighborhoodlibrary = new Neighborhoodlibrary();;
+        NeighborhoodLibrary neighborhoodlibrary = new NeighborhoodLibrary();;
         if (options.equals("C")) {
             System.out.println("Enter book id:");
             int id = scanner.nextInt();
@@ -94,7 +97,8 @@ public class Neighborhoodlibrary {
             System.out.println("Invalid Option");
         }
     }
-       // method checkIn
+
+    // method checkIn
     public void checkIn(int id, Book[] books){
         for (int i = 0; i<books.length; i++){
             if (books[i].getId()==id){
@@ -104,8 +108,8 @@ public class Neighborhoodlibrary {
         }
         System.out.println("Checked in successfully");
     }
-    // method checkOut
 
+    // method checkOut
     public void checkOut(int id, String name, Book[] books){
         for (int i = 0; i<books.length; i++){
             if (books[i].getId()==id){
